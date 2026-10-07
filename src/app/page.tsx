@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import StatsBar from "@/components/ui/StatsBar";
 import ServicesOverview from "@/components/home/ServicesOverview";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <StatsBar />
       <ServicesOverview />
       <WhyChooseUs />
       <FeaturedProjects />

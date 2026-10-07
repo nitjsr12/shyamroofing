@@ -7,6 +7,7 @@ type ContactPayload = {
   phone: string;
   email: string;
   message: string;
+  service?: string;
 };
 
 function clean(input: string, maxLen: number) {
@@ -30,6 +31,7 @@ export async function POST(req: Request) {
   const phone = clean(payload?.phone ?? "", 20);
   const email = clean(payload?.email ?? "", 120).toLowerCase();
   const message = clean(payload?.message ?? "", 1200);
+  const service = clean(payload?.service ?? "", 80);
 
   if (!name || name.length < 2) {
     return NextResponse.json({ ok: false, error: "Please enter your name." }, { status: 400 });
@@ -45,11 +47,11 @@ export async function POST(req: Request) {
   }
 
   const lead = {
-    ...payload,
     name,
     phone,
     email,
     message,
+    service: service || undefined,
     createdAt: new Date().toISOString(),
     source: "shyam-roofing-website",
   };
